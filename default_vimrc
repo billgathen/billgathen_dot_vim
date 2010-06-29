@@ -16,6 +16,9 @@ set cindent       "recommended seting for automatic C-style indentation
 set autoindent    "automatic indentation in non-C files
 set wrap          "wrap entire words, don't break them; much easier to read!
 
+" SnipMate
+:filetype plugin on
+
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
