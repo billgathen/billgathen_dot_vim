@@ -1,8 +1,10 @@
 " CHECK THIS DIRECTORY INTO GITHUB!
 
+set guifont=Monaco:h12
+set guioptions-=T
 set number
-set columns=90
-set lines=60
+set columns=100
+set lines=65
 let mapleader=","
 
 set shiftwidth=2  "number of spaces to use in each autoindent step
