@@ -3,7 +3,7 @@
 set guifont=Monaco:h12
 set guioptions-=T
 set number
-set columns=100
+set columns=120
 set lines=65
 let mapleader=","
 
@@ -15,7 +15,6 @@ set expandtab     "spaces instead of tabs for better cross-editor compatibility
 set autoindent    "keep the indent when creating a new line
 set smarttab      "use shiftwidth and softtabstop to insert or delete (on <BS>) blanks
 set cindent       "recommended seting for automatic C-style indentation
-set autoindent    "automatic indentation in non-C files
 set wrap          "wrap entire words, don't break them; much easier to read!
 
 " Pathogen
@@ -45,10 +44,6 @@ map <silent> <leader>R :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " COMMAND-T CONFIG http://www.vim.org/scripts/script.php?script_id=3025
 set wildignore+=vendor/**,tmp/**,log/**
 
-" Tim Pope on GitHub: rails, git, haml, cucumber...
-" Ack (full-project searches)?
-" Snippets?
-" Rails?
-" Git?
-" RSpec?
-" Cucumber?
+if has("autocmd")
+  filetype indent on
+end
