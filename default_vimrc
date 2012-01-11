@@ -45,13 +45,17 @@ map <silent> <leader>R :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " COMMAND-T CONFIG http://www.vim.org/scripts/script.php?script_id=3025
 set wildignore+=vendor/**,tmp/**,log/**
 
-if has("autocmd")
-  filetype indent on
-end
+" if has("autocmd")
+"   filetype indent on
+" end
 
 " FUGITIVE
 " Add branch name to status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
+" Vim Coffee Script
+" Get 2-space indentation
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
 " Run current file, saving it first
-map <leader>. :set autowrite<CR> :!./%<CR>
+map <leader>. :set autowrite<CR>:!./%<CR>
