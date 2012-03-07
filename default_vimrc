@@ -21,29 +21,9 @@ set laststatus=2  "show status line
 " Pathogen
 call pathogen#runtime_append_all_bundles()
 
-" MakeGreen
-autocmd BufNewFile,BufRead *_spec.rb compiler rspec
-map <Leader>g <Plug>MakeGreen " change from <Leader>t to <Leader>g
-
-" Gist
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-
-" SnipMate
-:filetype plugin on
-
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
-
-" VIMRC ACCESS
-" EDIT
-map <leader>r :e ~/.vim/default_vimrc<CR>
-" RELOAD
-map <silent> <leader>R :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
-" COMMAND-T CONFIG http://www.vim.org/scripts/script.php?script_id=3025
-set wildignore+=vendor/**,tmp/**,log/**
 
 " if has("autocmd")
 "   filetype indent on
@@ -59,3 +39,14 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " Run current file, saving it first
 map <leader>. :set autowrite<CR>:!./%<CR>
+
+" Keymaps
+" Move between splits with <c-hjkl>"
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+" <esc> is insane: use <c-c>
+imap <c-c> <esc>
+" <c-l> (lower-case L) does hashrocket in insert mode
+imap <c-l> <space>=><space>
