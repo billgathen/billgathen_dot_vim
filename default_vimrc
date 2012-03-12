@@ -46,7 +46,7 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-" <esc> is insane: use <c-c>
+" <esc> is error-prone: use <c-c>
 imap <c-c> <esc>
 " <c-l> (lower-case L) does hashrocket in insert mode
 imap <c-l> <space>=><space>
