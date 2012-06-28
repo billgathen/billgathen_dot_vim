@@ -18,6 +18,13 @@ set cindent       "recommended seting for automatic C-style indentation
 set wrap          "wrap entire words, don't break them; much easier to read!
 set laststatus=2  "show status line
 
+" vim-ruby suggested options
+set nocompatible
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
+
 " Pathogen
 call pathogen#runtime_append_all_bundles()
 
@@ -50,3 +57,6 @@ nnoremap <c-l> <c-w>l
 imap <c-c> <esc>
 " <c-l> (lower-case L) does hashrocket in insert mode
 imap <c-l> <space>=><space>
+
+" Command-T
+set wildignore+=*.swp,*.log
