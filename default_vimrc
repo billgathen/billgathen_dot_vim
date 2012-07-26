@@ -1,5 +1,7 @@
 " CHECK THIS DIRECTORY INTO GITHUB!
 
+colorscheme railscasts
+
 set guifont=Monaco:h12
 set guioptions-=T
 set number
