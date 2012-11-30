@@ -29,6 +29,9 @@ set linebreak     "wrap entire words, don't break them; much easier to read!
 set laststatus=2  "show status line
 set incsearch     "show partial matches while typing
 
+" Turn on spell-checking in markdown and text. (Ben Orenstein)
+:autocmd BufRead,BufNewFile *.textile,*.md,*.txt setlocal spell
+
 " vim-ruby suggested options
 set nocompatible
 syntax on
