@@ -38,6 +38,7 @@ syntax on
 filetype on
 filetype indent on
 filetype plugin on
+compiler ruby
 
 " Pathogen
 call pathogen#runtime_append_all_bundles()
@@ -47,6 +48,9 @@ call pathogen#runtime_append_all_bundles()
 
 " Execute current ruby file, saving it first
 map <leader>. :set autowrite<CR>:! ruby %<CR>
+
+" Generate ctags for the working directory
+map <leader>ct :call system("ctags -R")<CR>
 
 " Keymaps
 " Move between splits with <c-hjkl>"
@@ -83,8 +87,9 @@ set visualbell "flash the screen instead of that annoying 'plonk!'
 set ignorecase
 set smartcase
 
-" Tip 102: Regenerates ctags for the project every time a file is saved
-:autocmd BufWritePost * call system("ctags -R")
+" Replaced with explicit :ct command (see above)
+" " Tip 102: Regenerates ctags for the project every time a file is saved
+" :autocmd BufWritePost * call system("ctags -R")
 
 " Tip 109: Customize grep
 set grepprg=ack\ --nogroup\ --column\ $*

@@ -1,0 +1,227 @@
+= String < Object
+
+------------------------------------------------------------------------------
+= Includes:
+Comparable (from ruby site)
+
+Diff::LCS (from gem diff-lcs-1.1.3)
+
+MaRuKu::Strings (from gem maruku-0.6.1)
+
+(from gem tins-0.3.12)
+  StringCamelize
+  StringUnderscore
+  StringVersion
+
+(from ruby site)
+------------------------------------------------------------------------------
+A <tt>String</tt> object holds and manipulates an arbitrary sequence of bytes,
+typically representing characters. String objects may be created using
+<tt>String::new</tt> or as literals.
+
+Because of aliasing issues, users of strings should be aware of the methods
+that modify the contents of a <tt>String</tt> object.  Typically, methods with
+names ending in ``!'' modify their receiver, while those without a ``!''
+return a new <tt>String</tt>.  However, there are exceptions, such as
+<tt>String#[]=</tt>.
+Rake extension methods for String.
+
+------------------------------------------------------------------------------
+= Class methods:
+
+  .new, .try_convert
+
+= Instance methods:
+
+  %, *, +, <<, <=>, ==, ===, =~, [], []=, ascii_only?, block_scanf, bytes,
+  bytesize, byteslice, capitalize, capitalize!, casecmp, center, chars, chomp,
+  chomp!, chop, chop!, chr, clear, codepoints, concat, count, crypt, delete,
+  delete!, downcase, downcase!, dump, each_byte, each_char, each_codepoint,
+  each_line, empty?, encode, encode!, encoding, end_with?, eql?, ext,
+  force_encoding, getbyte, gsub, gsub!, hash, hex, include?, index,
+  initialize_copy, insert, inspect, intern, iseuc, isjis, issjis, isutf8,
+  kconv, length, lines, ljust, lstrip, lstrip!, match, next, next!, oct, ord,
+  parse_csv, partition, pathmap, pathmap_explode, pathmap_partial,
+  pathmap_replace, prepend, replace, reverse, reverse!, rindex, rjust,
+  rpartition, rstrip, rstrip!, scan, scanf, setbyte, shellescape, shellsplit,
+  size, slice, slice!, split, squeeze, squeeze!, start_with?, strip, strip!,
+  sub, sub!, succ, succ!, sum, swapcase, swapcase!, to_c, to_d, to_f, to_i,
+  to_r, to_s, to_str, to_sym, toeuc, tojis, tolocale, tosjis, toutf16,
+  toutf32, toutf8, tr, tr!, tr_s, tr_s!, unpack, upcase, upcase!, upto,
+  valid_encoding?
+
+
+(from gem activesupport-3.2.9)
+------------------------------------------------------------------------------
+String inflections define new methods on the String class to transform names
+for different purposes. For instance, you can figure out the name of a table
+from the name of a class.
+
+  "ScaleScore".tableize # => "scale_scores"
+
+------------------------------------------------------------------------------
+= Constants:
+
+NON_WHITESPACE_REGEXP:
+  0x3000: fullwidth whitespace
+
+= Instance methods:
+
+  acts_like_string?, as_json, at, blank?, camelcase, camelize, classify,
+  constantize, dasherize, deconstantize, demodulize, encode_json,
+  encoding_aware?, exclude?, first, foreign_key, from, html_safe, humanize,
+  inquiry, is_utf8?, last, mb_chars, ord, parameterize, pluralize,
+  safe_constantize, singularize, squish, squish!, strip_heredoc, tableize,
+  titlecase, titleize, to, to_date, to_datetime, to_time, truncate, underscore
+
+
+(from gem builder-3.0.4)
+------------------------------------------------------------------------------
+  Permission is granted for use, copying, modification, distribution,
+  and distribution of modified versions of this work as long as the
+  above copyright notice is included.
+
+++
+Enhance the String class with a XML escaped character version of to_s.
+
+------------------------------------------------------------------------------
+= Instance methods:
+
+  _blankslate_as_name, to_xs
+
+
+(from gem capistrano-2.13.5)
+------------------------------------------------------------------------------
+= Instance methods:
+
+  compact
+
+
+(from gem classifier-1.3.3)
+------------------------------------------------------------------------------
+These are extensions to the String class to provide convenience  methods for
+the Classifier package.
+Author:
+  Lucas Carlson  (mailto:lucas@rufy.com)
+
+Copyright:
+  Copyright (c) 2005 Lucas Carlson
+
+License:
+  LGPL
+
+
+------------------------------------------------------------------------------
+= Constants:
+
+CORPUS_SKIP_WORDS:
+  [not documented]
+
+= Instance methods:
+
+  clean_word_hash, paragraph_summary, split_paragraphs, split_sentences,
+  summary, without_punctuation, word_hash
+
+
+(from gem diff-lcs-1.1.3)
+------------------------------------------------------------------------------
+Includes Diff::LCS into String.
+
+
+(from gem fast-stemmer-1.0.1)
+------------------------------------------------------------------------------
+= Instance methods:
+
+  stem
+
+
+(from gem highline-1.6.15)
+------------------------------------------------------------------------------
+Not a perfect translation, but sufficient for our needs.
+
+
+(from gem i18n-0.6.1)
+------------------------------------------------------------------------------
+Extension for String class. This feature is included in Ruby 1.9 or later but
+not occur TypeError.
+
+String#% method which accept "named argument". The translator can know the
+meaning of the msgids using "named argument" instead of %s/%d style.
+
+------------------------------------------------------------------------------
+= Constants:
+
+INTERPOLATION_PATTERN:
+  [not documented]
+
+INTERPOLATION_PATTERN_WITH_ESCAPE:
+  [not documented]
+
+= Instance methods:
+
+  %, interpolate_without_ruby_19_syntax
+
+
+(from gem maruku-0.6.1)
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+= Constants:
+
+LATEX_ADD_SLASH:
+  These are TeX's special characters
+
+LATEX_TO_CHARCODE:
+  These, we transform to {tt char<ascii code>}
+
+OtherGoodies:
+  other things that are good on the eyes
+
+Textile2_EmptyLine:
+  [not documented]
+
+Textile2_Signature:
+  [not documented]
+
+= Instance methods:
+
+  escape_to_latex, fix_latex, inspect_more, md_type, mysplit, quote_if_needed,
+  t2_contains_signature?, t2_empty?, t2_get_signature, to_html, to_latex,
+  to_md
+
+
+(from gem net-ssh-2.6.1)
+------------------------------------------------------------------------------
+= Instance methods:
+
+  bytesize, getbyte, setbyte
+
+
+(from gem rake-10.0.2)
+------------------------------------------------------------------------------
+Rake extension methods for String.
+
+------------------------------------------------------------------------------
+= Instance methods:
+
+  ext, pathmap, pathmap_explode, pathmap_partial, pathmap_replace
+
+
+(from gem tins-0.3.12)
+------------------------------------------------------------------------------
+
+
+(from gem treetop-1.4.10)
+------------------------------------------------------------------------------
+= Instance methods:
+
+  blank?, column_of, indent, line_of, tabto, treetop_camelize
+
+
+------------------------------------------------------------------------------
+Also found in:
+  gem actionmailer-2.3.5
+  gem httpclient-2.3.0.1
+  gem kramdown-0.14.0
+  gem selenium-webdriver-2.27.0
+

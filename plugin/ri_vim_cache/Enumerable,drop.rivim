@@ -1,0 +1,15 @@
+= Enumerable#drop
+
+(from ruby site)
+------------------------------------------------------------------------------
+  enum.drop(n)               -> array
+
+------------------------------------------------------------------------------
+
+Drops first n elements from <em>enum</em>, and returns rest elements in an
+array.
+
+  a = [1, 2, 3, 4, 5, 0]
+  a.drop(3)             #=> [4, 5, 0]
+
+

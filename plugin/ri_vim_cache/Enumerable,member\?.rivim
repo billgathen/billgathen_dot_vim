@@ -1,0 +1,16 @@
+= Enumerable#member?
+
+(from ruby site)
+------------------------------------------------------------------------------
+  enum.include?(obj)     -> true or false
+  enum.member?(obj)      -> true or false
+
+------------------------------------------------------------------------------
+
+Returns <tt>true</tt> if any member of <em>enum</em> equals <em>obj</em>.
+Equality is tested using <tt>==</tt>.
+
+  IO.constants.include? :SEEK_SET          #=> true
+  IO.constants.include? :SEEK_NO_FURTHER   #=> false
+
+

@@ -1,0 +1,18 @@
+= String#delete
+
+(from ruby site)
+------------------------------------------------------------------------------
+  str.delete([other_str]+)   -> new_str
+
+------------------------------------------------------------------------------
+
+Returns a copy of <em>str</em> with all characters in the intersection of its
+arguments deleted. Uses the same rules for building the set of characters as
+<tt>String#count</tt>.
+
+  "hello".delete "l","lo"        #=> "heo"
+  "hello".delete "lo"            #=> "he"
+  "hello".delete "aeiou", "^e"   #=> "hell"
+  "hello".delete "ej-m"          #=> "ho"
+
+

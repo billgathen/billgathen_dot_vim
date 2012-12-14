@@ -1,0 +1,73 @@
+= class < Module
+
+(from ruby site)
+------------------------------------------------------------------------------
+Classes in Ruby are first-class objects---each is an instance of class
+<tt>Class</tt>.
+
+When a new class is created (typically using <tt>class Name ... end</tt>), an
+object of type <tt>Class</tt> is created and assigned to a global constant
+(<tt>Name</tt> in this case). When <tt>Name.new</tt> is called to create a new
+object, the <tt>new</tt> method in <tt>Class</tt> is run by default. This can
+be demonstrated by overriding <tt>new</tt> in <tt>Class</tt>:
+
+  class Class
+     alias oldNew  new
+     def new(*args)
+       print "Creating a new ", self.name, "\n"
+       oldNew(*args)
+     end
+   end
+
+   class Name
+   end
+
+   n = Name.new
+
+<em>produces:</em>
+
+  Creating a new Name
+
+Classes, modules, and objects are interrelated. In the diagram that follows,
+the vertical arrows represent inheritance, and the parentheses meta-classes.
+All metaclasses are instances of the class `Class'.
+                           +---------+             +-...
+                           |         |             |
+           BasicObject-----|-->(BasicObject)-------|-...
+               ^           |         ^             |
+               |           |         |             |
+            Object---------|----->(Object)---------|-...
+               ^           |         ^             |
+               |           |         |             |
+               +-------+   |         +--------+    |
+               |       |   |         |        |    |
+               |    Module-|---------|--->(Module)-|-...
+               |       ^   |         |        ^    |
+               |       |   |         |        |    |
+               |     Class-|---------|---->(Class)-|-...
+               |       ^   |         |        ^    |
+               |       +---+         |        +----+
+               |                     |
+  obj--->OtherClass---------->(OtherClass)-----------...
+Extends any Class to include <em>json_creatable?</em> method.
+
+------------------------------------------------------------------------------
+= Class methods:
+
+  .new
+
+= Instance methods:
+
+  allocate, inherited, json_creatable?, new, superclass
+
+
+(from gem json-1.7.5)
+------------------------------------------------------------------------------
+Extends any Class to include <em>json_creatable?</em> method.
+
+------------------------------------------------------------------------------
+= Instance methods:
+
+  json_creatable?
+
+

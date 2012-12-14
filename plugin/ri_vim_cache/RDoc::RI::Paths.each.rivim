@@ -1,0 +1,58 @@
+= RDoc::RI::Paths.each
+
+(from ruby site)
+------------------------------------------------------------------------------
+  each(system, site, home, gems, *extra_dirs) { |directory, type| ... }
+
+------------------------------------------------------------------------------
+
+Iterates over each selected path yielding the directory and type.
+
+Yielded types:
+:system:
+  Where Ruby's ri data is stored.  Yielded when <tt>system</tt> is true
+
+:site:
+  Where ri for installed libraries are stored.  Yielded when <tt>site</tt> is
+  true.  Normally no ri data is stored here.
+
+:home:
+  ~/.rdoc.  Yielded when <tt>home</tt> is true.
+
+:gem:
+  ri data for an installed gem.  Yielded when <tt>gems</tt> is true.
+
+:extra:
+  ri data directory from the command line.  Yielded for each entry in
+  <tt>extra_dirs</tt>
+
+
+
+(from gem rdoc-3.12)
+------------------------------------------------------------------------------
+  each(system, site, home, gems, *extra_dirs) { |directory, type| ... }
+
+------------------------------------------------------------------------------
+
+Iterates over each selected path yielding the directory and type.
+
+Yielded types:
+:system:
+  Where Ruby's ri data is stored.  Yielded when <tt>system</tt> is true
+
+:site:
+  Where ri for installed libraries are stored.  Yielded when <tt>site</tt> is
+  true.  Normally no ri data is stored here.
+
+:home:
+  ~/.rdoc.  Yielded when <tt>home</tt> is true.
+
+:gem:
+  ri data for an installed gem.  Yielded when <tt>gems</tt> is true.
+
+:extra:
+  ri data directory from the command line.  Yielded for each entry in
+  <tt>extra_dirs</tt>
+
+
+

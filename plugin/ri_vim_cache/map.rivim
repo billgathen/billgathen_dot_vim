@@ -1,0 +1,25 @@
+= map
+
+(from gem bundler-1.1.5)
+=== Implementation from Thor
+------------------------------------------------------------------------------
+  map(mappings=nil)
+
+------------------------------------------------------------------------------
+
+Maps an input to a task. If you define:
+
+  map "-T" => "list"
+
+Running:
+
+  thor -T
+
+Will invoke the list task.
+
+==== Parameters
+Hash[String|Array => Symbol]:
+  Maps the string or the strings in the array to the given task.
+
+
+
