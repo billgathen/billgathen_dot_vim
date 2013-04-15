@@ -41,7 +41,8 @@ filetype plugin on
 compiler ruby
 
 " Pathogen
-call pathogen#runtime_append_all_bundles()
+" call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 " Fugitive: Add branch name to status line
 " set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
