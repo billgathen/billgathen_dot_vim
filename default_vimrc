@@ -51,7 +51,7 @@ call pathogen#infect()
 map <leader>. :set autowrite<CR>:! ruby %<CR>
 
 " Generate ctags for the working directory
-map <leader>ct :call system("ctags -R")<CR>
+map <leader>ct :call system("ctags -R --exclude=angular --exclude=public")<CR>
 
 " Keymaps
 " Move between splits with <c-hjkl>"
