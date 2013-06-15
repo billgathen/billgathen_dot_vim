@@ -1,9 +1,5 @@
 = File < IO
 
-------------------------------------------------------------------------------
-= Includes:
-FileBinary (from gem tins-0.3.12)
-
 (from ruby site)
 ------------------------------------------------------------------------------
 A <tt>File</tt> is an abstraction of any file object accessible by the program
@@ -64,14 +60,7 @@ Separator:
   truncate
 
 
-(from gem RubyInline-3.11.2)
-------------------------------------------------------------------------------
-= Class methods:
-
-  .write_with_backup
-
-
-(from gem activesupport-3.2.9)
+(from gem activesupport-3.2.11)
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
@@ -80,12 +69,23 @@ Separator:
   .atomic_write
 
 
-(from gem file-tail-1.0.8)
+(from gem backports-3.3.0)
 ------------------------------------------------------------------------------
 
-
 ------------------------------------------------------------------------------
-Also found in:
-  gem actionmailer-2.3.5
-  gem tins-0.3.12
+= Class methods:
+
+  .expand_path_with_potential_to_path
+
+= Instance methods:
+
+  size
+
+
+(from gem hoe-3.0.7)
+------------------------------------------------------------------------------
+= Class methods:
+
+  .read_utf
+
 

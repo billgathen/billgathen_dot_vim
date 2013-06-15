@@ -6,6 +6,9 @@
 " To reload it after making changes, use
 "   :source %
 "
+" NOTE: My cheat sheets can be accessed via another global mark:
+"   'C
+"
 
 colorscheme railscasts
 

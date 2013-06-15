@@ -1,0 +1,44 @@
+= Dir < Object
+
+------------------------------------------------------------------------------
+= Includes:
+Enumerable (from ruby site)
+
+(from ruby site)
+------------------------------------------------------------------------------
+Objects of class <tt>Dir</tt> are directory streams representing directories
+in the underlying file system. They provide a variety of ways to list
+directories and their contents. See also <tt>File</tt>.
+
+The directory used in these examples contains the two regular files
+(<tt>config.h</tt> and <tt>main.rb</tt>), the parent directory (<tt>..</tt>),
+and the directory itself (<tt>.</tt>).
+
+------------------------------------------------------------------------------
+= Class methods:
+
+  .[], .chdir, .chroot, .delete, .entries, .exist?, .exists?, .foreach,
+  .getwd, .glob, .home, .mkdir, .mktmpdir, .new, .open, .pwd, .rmdir, .tmpdir,
+  .unlink
+
+= Instance methods:
+
+  close, each, inspect, path, pos, pos=, read, rewind, seek, tell, to_path
+
+
+(from gem backports-3.3.0)
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+= Class methods:
+
+  .home, .mktmpdir
+
+
+(from gem selenium-webdriver-2.29.0)
+------------------------------------------------------------------------------
+= Class methods:
+
+  .mktmpdir
+
+
