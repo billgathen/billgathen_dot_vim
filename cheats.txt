@@ -1,7 +1,8 @@
 ##### Capybara (https://github.com/jnicklas/capybara)
-# require 'capybara/rspec' # in spec_helper.rb
+# require 'capybara/rspec' # in spec_helper
 # for rails, put capybara specs in spec/features
 # outside rails, tag all groups with :type => :feature
+# outside rails, add to spec_helper: Capybara.app = MyRackApp
 # for js specs, tag with :js => true
 NAVIGATION
   visit "/blog"
@@ -30,3 +31,29 @@ FORM INTERACTIONS
   click_on "Create my account" # works with buttons or links
 DEBUGGING
   save_and_open_page
+
+##### TMUX
+# ~/.tmux.conf
+SESSIONS
+  tls # from command-line to see a list of sessions
+  ta <session name> # from command-line to re-attach to a live session
+  tmux new -s <session name>
+  ctrl-a or capslock-a is prefix
+  prefix d to detach and leave session running
+  tmux kill-session -t <session name>
+  prefix s # list all (or switch) sessions
+  prefix : new -s <session name> # create new session from within tmux session
+WINDOWS
+  prefix c # create window
+  prefix , # rename current window
+  prefix n,p # next/previous window
+  prefix <num> # jump to that window
+  prefix f # find window in this session
+  prefix w # display all windows in this session
+  prefix & # close current window
+PANES
+  prefix |,- # vertical/horizontal split
+  prefix x # close pane: exiting shell also works
+  prefix h,j,k,l # move to pane in that direction
+  prefix H,J,K,L # resize pane by moving panel border that direction
+
