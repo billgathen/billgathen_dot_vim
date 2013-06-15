@@ -1,44 +1,32 @@
-##### Capybara (https://learn.thoughtbot.com/test-driven-rails-resources/capybara.pdf)
+##### Capybara (https://github.com/jnicklas/capybara)
+# require 'capybara/rspec' # in spec_helper.rb
+# for rails, put capybara specs in spec/features
+# outside rails, tag all groups with :type => :feature
+# for js specs, tag with :js => true
 NAVIGATION
-  visit: Pass a string or use one of Rails' path helpers.
-            visit "/blog"
-            visit blogs_path
-  click_link: click an anchor tag. Pass a string containing the anchor text.
-            click_link "Sign in"
+  visit "/blog"
+  visit blogs_path
+  click_link "Sign in"
 PAGE INTERACTION AND SCOPING
-  within: scope interaction to within a particular selector. Nest to any depth.
-            within("footer") { expect(page).to have_content("Copyright") }
-  has_content?: returns a boolean value reporting whether specific content is present on the page.
-            page.has_content?("Sign in")
-  wait_until: executes a block until it returns true or raises a Timeout. Works with JavaScript drivers.
-            wait_until { page.has_content?("Data loaded!") }
-PAGE ASSERTIONS
-  have_content: asserts that certain text is present on the page.
-            expect(page).to have_content("What are you looking for?")
-  have_css: asserts that a certain selector is present. Accepts CSS3.
-            expect(page).to have_css("header")
-            expect(page).to have_css("table#records + .pagination a[rel='next']")
+  within("footer") { expect(page).to have_content("Copyright") }
+  page.has_content?("Sign in")
+  wait_until { page.has_content?("Data loaded!") }
+PAGE MATCHERS
+  expect(page).to have_content("What are you looking for?")
+  expect(page).to have_css("header")
+  expect(page).to have_css("table#records + .pagination a[rel='next']")
 NODE INTERACTIONS
-  click: triggers a click on a Capybara::Element. Works with JavaScript drivers.
-            find("article a.title").click
-  trigger: triggers custom events. Works with JavaScript drivers.
-            find("input[name='post[title]']").trigger("focus")
-  visible?: returns a boolean reporting if a Capybara::Element is visible. Works with JavaScript drivers.
-            wait_until { find(".navigation").visible? }
+  find("article a.title").click
+  find("input[name='post[title]']").trigger("focus")
+  wait_until { find(".navigation").visible? } # useful for JavaScript-created elements
 FORM INTERACTIONS
-  fill_in: fills in fields for you. Pass the label text or the name of the input.
-            fill_in "Title", :with => "I love RSpec!"
-            fill_in "post[title]", :with => "I love RSpec!"
-  check: checks a checkbox. Pass the label text.
-            check "I accept the terms of the site"
-  uncheck: unchecks a checkbox. Pass the label text.
-            uncheck "Please spam me"
-  select: selects an option from a select tag.
-            select "Moderate", :from => "Political Party"
-            select "MI", :from => "State"
-  choose: selects a radio button.
-            choose "Very Interested"
-  click_button: press a button or input[type='submit']
-            click_button "Create my account"
+  fill_in "Title", :with => "I love RSpec!" # text/textareas
+  fill_in "post[title]", :with => "I love RSpec!" # text/textareas
+  check "I accept the terms of the site" # check boxes
+  uncheck "Please spam me" # check boxes
+  select "Moderate", :from => "Political Party" # select boxes
+  select "MI", :from => "State" # select boxes
+  choose "Very Interested" # radio buttons
+  click_on "Create my account" # works with buttons or links
 DEBUGGING
-  save_and_open_page: saves the current page to Rails.root/tmp and open it in the default browser
+  save_and_open_page
