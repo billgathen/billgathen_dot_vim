@@ -56,4 +56,11 @@ PANES
   prefix x # close pane: exiting shell also works
   prefix h,j,k,l # move to pane in that direction
   prefix H,J,K,L # resize pane by moving panel border that direction
-
+##### Gist.vim (https://github.com/vim-scripts/Gist.vim)
+:Gist # Send entire file to gist. Run with area selected to send part of file
+:Gist -s "some description" # create gist with description
+:Gist -e -s "new description" # push edits and update description
+:Gist -l # Show all my public gists
+:Gist -l <user> # Show all user's public gists
+:Gist -f # fork opened gist
+:Gist 99999 # Get gist #99999
