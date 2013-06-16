@@ -34,11 +34,11 @@ DEBUGGING
 
 ##### TMUX
 # ~/.tmux.conf
+# prefix: ctrl-a (capslock is remapped to ctrl)
 SESSIONS
   tls # from command-line to see a list of sessions
   ta <session name> # from command-line to re-attach to a live session
   tmux new -s <session name>
-  ctrl-a or capslock-a is prefix
   prefix d to detach and leave session running
   tmux kill-session -t <session name>
   prefix s # list all (or switch) sessions
