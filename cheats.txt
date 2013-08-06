@@ -1,3 +1,56 @@
+##### My Cheat Sheets #####
+
+##### Pry
+binding.pry # add to source code or test: pry pauses here
+help # show pry help
+cd Class # make that class local: cd by itself jumps out
+ls <something> # show vars, methods
+? <something> # show ri docs
+$ <something> # show source
+
+##### irb-config for running tests with vim/tmux
+,c # open dedicated tmux pane running rails console
+,C # close dedicated tmux pane
+,q # quiet activerecord logging
+,t # run the current test
+,T # run all the tests
+,W # write/reload the current file in the console
+
+##### TMUX
+# ~/.tmux.conf
+# prefix: ctrl-a (capslock is remapped to ctrl)
+SESSIONS
+  tls # from command-line to see a list of sessions
+  ta <session name> # from command-line to re-attach to a live session
+  tmux new -s <session name>
+  prefix d to detach and leave session running
+  tmux kill-session -t <session name>
+  prefix s # list all (or switch) sessions
+  prefix : new -s <session name> # create new session from within tmux session
+WINDOWS
+  prefix c # create window
+  prefix , # rename current window
+  prefix n,p # next/previous window
+  prefix <num> # jump to that window
+  prefix f # find window in this session
+  prefix w # display all windows in this session
+  prefix & # close current window
+PANES
+  prefix |,- # vertical/horizontal split
+  prefix x # close pane: exiting shell also works
+  prefix h,j,k,l # move to pane in that direction
+  prefix H,J,K,L # resize pane by moving panel border that direction
+  prefix x # close current pane
+
+##### Gist.vim (https://github.com/vim-scripts/Gist.vim)
+:Gist # Send entire file to gist. Run with area selected to send part of file
+:Gist -s "some description" # create gist with description
+:Gist -e -s "new description" # push edits and update description
+:Gist -l # Show all my public gists
+:Gist -l <user> # Show all user's public gists
+:Gist -f # fork opened gist
+:Gist 99999 # Get gist #99999
+
 ##### Capybara (https://github.com/jnicklas/capybara)
 # require 'capybara/rspec' # in spec_helper
 # for rails, put capybara specs in spec/features
@@ -31,36 +84,3 @@ FORM INTERACTIONS
   click_on "Create my account" # works with buttons or links
 DEBUGGING
   save_and_open_page
-
-##### TMUX
-# ~/.tmux.conf
-# prefix: ctrl-a (capslock is remapped to ctrl)
-SESSIONS
-  tls # from command-line to see a list of sessions
-  ta <session name> # from command-line to re-attach to a live session
-  tmux new -s <session name>
-  prefix d to detach and leave session running
-  tmux kill-session -t <session name>
-  prefix s # list all (or switch) sessions
-  prefix : new -s <session name> # create new session from within tmux session
-WINDOWS
-  prefix c # create window
-  prefix , # rename current window
-  prefix n,p # next/previous window
-  prefix <num> # jump to that window
-  prefix f # find window in this session
-  prefix w # display all windows in this session
-  prefix & # close current window
-PANES
-  prefix |,- # vertical/horizontal split
-  prefix x # close pane: exiting shell also works
-  prefix h,j,k,l # move to pane in that direction
-  prefix H,J,K,L # resize pane by moving panel border that direction
-##### Gist.vim (https://github.com/vim-scripts/Gist.vim)
-:Gist # Send entire file to gist. Run with area selected to send part of file
-:Gist -s "some description" # create gist with description
-:Gist -e -s "new description" # push edits and update description
-:Gist -l # Show all my public gists
-:Gist -l <user> # Show all user's public gists
-:Gist -f # fork opened gist
-:Gist 99999 # Get gist #99999
