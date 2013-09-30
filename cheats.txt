@@ -1,5 +1,21 @@
 ##### My Cheat Sheets #####
 
+##### Converting Rails MRI project to JRuby
+In .ruby-version:
+  jruby-1.7.4
+In Gemfile:
+  # gem "therubyracer"
+  gem "therubyrhino"
+  gem "activerecord-jdbcmysql-adapter"
+  # gem "activerecord-mysql-adapter"
+  # gem "mysql2"
+  # gem "sqlite3"
+In config/database.yml: (all environments)
+  adapter: mysql
+Yieldmanager gem must be at least 0.9.6
+bundle
+NOTE: won't run under POW!? (tries to run as 1.9.3)
+
 ##### Pry
 binding.pry # add to source code or test: pry pauses here
 help # show pry help
@@ -84,3 +100,9 @@ FORM INTERACTIONS
   click_on "Create my account" # works with buttons or links
 DEBUGGING
   save_and_open_page
+
+##### Zencoding (aka Emmet.vim)
+Everything fired with ctrl+y ,
+html:5 # generate standard html file
+div#foo.bar # <div id='foo' class='bar'></div>
+ol>li#foo$*2 # <ol><li id='foo1'></li><li id='foo2'></li></ol>

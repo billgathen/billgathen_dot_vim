@@ -3,4 +3,5 @@
 .netrwhist
 *.swp
 *.swo
+plugin/ri_vim_cache/*
 

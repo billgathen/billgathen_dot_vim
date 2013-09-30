@@ -53,6 +53,9 @@ call pathogen#infect()
 " Execute current ruby file, saving it first
 map <leader>. :set autowrite<CR>:! ruby %<CR>
 
+" Execute current javascript file using node, saving it first
+map <leader>j :set autowrite<CR>:! node %<CR>
+
 " Generate ctags for the working directory
 map <leader>ct :call system("ctags -R --exclude=angular --exclude=public")<CR>
 
@@ -66,7 +69,7 @@ nnoremap <c-l> <c-w>l
 imap <c-l> <space>=><space>
 
 " Command-T
-set wildignore+=*.swp,*.log
+set wildignore+=*.swp,*.log,node_modules,app/components
 
 "
 " Stephen Bach http://items.sjbach.com/319/configuring-vim-right
@@ -140,6 +143,7 @@ map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
 map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
+map <leader>gd :topleft 100 :split db/schema.rb<cr>
 map <leader>gt :CommandTFlush<cr>\|:CommandTTag<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
@@ -211,7 +215,8 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 " https://github.com/nviennot/irb-config
 "
 command -nargs=? -complete=shellcmd W  :w | :call ScreenShellSend("load '".@%."';")
-map <Leader>c :ScreenShellVertical bundle exec rails c<CR>
+" map <Leader>c :ScreenShellVertical bundle exec rails c<CR>
+map <Leader>c :ScreenShell bundle exec rails c<CR>
 map <Leader>C :ScreenQuit<CR>
 map <Leader>q :call ScreenShellSend("ActiveRecord::Base.logger.level = Logger::INFO")<CR><CR>
 map <Leader>t :w<CR> :call ScreenShellSend("rspec ".@% . ':' . line('.'))<CR>
@@ -219,3 +224,8 @@ map <Leader>T :w<CR> :call ScreenShellSend("rspec spec")<CR>
 map <Leader>e :w<CR> :call ScreenShellSend("cucumber --format=pretty ".@% . ':' . line('.'))<CR>
 map <Leader>b :w<CR> :call ScreenShellSend("break ".@% . ':' . line('.'))<CR>
 " End irb-config
+
+" node-config
+map <Leader>n :ScreenShell<CR>
+map <Leader>N :ScreenQuit<CR>
+map <Leader>j :w<CR> :call ScreenShellSend("node ".@%)<CR>
