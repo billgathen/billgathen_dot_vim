@@ -9,6 +9,9 @@
 " NOTE: My cheat sheets can be accessed via another global mark:
 "   'C
 "
+" NOTE: If you lose ability to copy/paste to Mac clipboard, do this:
+"   https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+
 
 colorscheme railscasts
 
