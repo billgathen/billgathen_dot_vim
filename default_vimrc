@@ -1,13 +1,12 @@
 " CHECK THIS DIRECTORY INTO GITHUB!
 "
-" NOTE: I used mV to set a global mark in this file, so to edit it, use:
-"   'V
-"
-" To reload it after making changes, use
-"   :source %
-"
-" NOTE: My cheat sheets can be accessed via another global mark:
-"   'C
+" MY GLOBAL MARKS: (set using mV, mC, etc)
+"   'V  # this file (~/.vimrc)
+"   :source % # reloads this file after changes
+"   'C  # my cheat sheets (~/.vim/cheats.txt)
+"   'M  # executable MiniTest cheat sheet (~/.vim/minitest_cheat.rb)
+"   'P  # my project-tracking file (~/bills-projects.txt)
+"       # also available via p at the command-line
 "
 " NOTE: If you lose ability to copy/paste to Mac clipboard, do this:
 "   https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
@@ -59,6 +58,16 @@ map <leader>. :set autowrite<CR>:! ruby %<CR>
 " Execute current javascript file using node, saving it first
 map <leader>j :set autowrite<CR>:! node %<CR>
 
+" Execute current coffeescript file using coffee, saving it first
+map <leader>cs :set autowrite<CR>:! coffee %<CR>
+
+" Execute current jasmine coffeescript file, saving it first
+map <leader>jn :set autowrite<CR>:! jasmine-node --coffee %<CR>
+
+" Open split with shell
+map <Leader>sv :ScreenShellVertical<CR>
+map <Leader>s :ScreenShell<CR>
+
 " Generate ctags for the working directory
 map <leader>ct :call system("ctags -R --exclude=angular --exclude=public")<CR>
 
@@ -70,6 +79,9 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 " hashrocket in insert mode
 imap <c-l> <space>=><space>
+
+" Dash integration
+:nmap <silent> <leader>d <Plug>DashSearch
 
 " Command-T
 set wildignore+=*.swp,*.log,node_modules,app/components
@@ -218,17 +230,16 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 " https://github.com/nviennot/irb-config
 "
 command -nargs=? -complete=shellcmd W  :w | :call ScreenShellSend("load '".@%."';")
-map <Leader>c :ScreenShellVertical bundle exec rails c<CR>
-" map <Leader>c :ScreenShell rails c<CR>
-map <Leader>C :ScreenQuit<CR>
-map <Leader>q :call ScreenShellSend("ActiveRecord::Base.logger.level = Logger::INFO")<CR> :call ScreenShellSend("ActionController::Base.logger.level = Logger::ERROR")<CR> :call ScreenShellSend("Rails.logger.level = Logger::ERROR")<CR><CR>
-map <Leader>t :w<CR> :call ScreenShellSend("rspec ".@% . ':' . line('.'))<CR>
-map <Leader>T :w<CR> :call ScreenShellSend("rspec spec")<CR>
-map <Leader>e :w<CR> :call ScreenShellSend("cucumber --format=pretty ".@% . ':' . line('.'))<CR>
-map <Leader>b :w<CR> :call ScreenShellSend("break ".@% . ':' . line('.'))<CR>
+map <Leader>Q :ScreenQuit<CR>
+map <Leader>rails :ScreenShellVertical bundle exec rails c<CR>
+map <Leader>quiet :call ScreenShellSend("ActiveRecord::Base.logger.level = Logger::INFO")<CR> :call ScreenShellSend("ActionController::Base.logger.level = Logger::ERROR")<CR> :call ScreenShellSend("Rails.logger.level = Logger::ERROR")<CR><CR>
+map <Leader>rs :w<CR> :call ScreenShellSend("rspec ".@% . ':' . line('.'))<CR>
+map <Leader>RS :w<CR> :call ScreenShellSend("rspec spec")<CR>
+" Run minitest. Requires 'm' gem
+map <Leader>m :w<CR> :call ScreenShellSend("m ".@% . ':' . line('.'))<CR>
+map <Leader>M :w<CR> :call ScreenShellSend("m")<CR>
 " End irb-config
 
 " node-config
 map <Leader>n :ScreenShell<CR>
-map <Leader>N :ScreenQuit<CR>
 map <Leader>j :w<CR> :call ScreenShellSend("node ".@%)<CR>
