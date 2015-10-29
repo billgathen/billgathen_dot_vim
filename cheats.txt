@@ -1,20 +1,21 @@
 ##### My Cheat Sheets #####
 
-##### Converting Rails MRI project to JRuby
-In .ruby-version:
-  jruby-1.7.4
-In Gemfile:
-  # gem "therubyracer"
-  gem "therubyrhino"
-  gem "activerecord-jdbcmysql-adapter"
-  # gem "activerecord-mysql-adapter"
-  # gem "mysql2"
-  # gem "sqlite3"
-In config/database.yml: (all environments)
-  adapter: mysql
-Yieldmanager gem must be at least 0.9.6
-bundle
-NOTE: won't run under POW!? (tries to run as 1.9.3)
+##### Vim
+NAVIGATION
+  w/W : beginning of the next word. Capital ignores punctuation
+  b/B : beginning of previous word. Capital ignores punctuation
+  e/E : end of current word. Capital ignores punctuation
+TABS
+  :tabe <filename> # edit file in new tab
+  c-t : open ctrlp-located file in a new tab
+  gt/gT # next/previous tab
+  #gt # move to that tab number
+  :tabc # close tab and all its windows
+  c-wT # throw the current split into its own tab
+
+UNDO/REDO
+u : undo
+c-r : redo
 
 ##### Pry
 binding.pry # add to source code or test: pry pauses here
@@ -24,17 +25,9 @@ ls <something> # show vars, methods
 ? <something> # show ri docs
 $ <something> # show source
 
-##### irb-config for running tests with vim/tmux
-,c # open dedicated tmux pane running rails console
-,C # close dedicated tmux pane
-,q # quiet activerecord logging
-,t # run the current test
-,T # run all the tests
-,W # write/reload the current file in the console
-
 ##### TMUX
 # ~/.tmux.conf
-# prefix: ctrl-a (capslock is remapped to ctrl)
+# prefix: ctrl-t (capslock is remapped to ctrl)
 SESSIONS
   tls # from command-line to see a list of sessions
   ta <session name> # from command-line to re-attach to a live session
@@ -43,6 +36,7 @@ SESSIONS
   tmux kill-session -t <session name>
   prefix s # list all (or switch) sessions
   prefix : new -s <session name> # create new session from within tmux session
+  prefix & : kill current session (exits vim and tmux back to command-line)
 WINDOWS
   prefix c # create window
   prefix , # rename current window
@@ -56,7 +50,7 @@ PANES
   prefix x # close pane: exiting shell also works
   prefix h,j,k,l # move to pane in that direction
   prefix H,J,K,L # resize pane by moving panel border that direction
-  prefix x # close current pane
+  prefix z # toggle zoom of current pane
 
 ##### Gist.vim (https://github.com/vim-scripts/Gist.vim)
 :Gist # Send entire file to gist. Run with area selected to send part of file
@@ -106,60 +100,3 @@ Everything fired with ctrl+y ,
 html:5 # generate standard html file
 div#foo.bar # <div id='foo' class='bar'></div>
 ol>li#foo$*2 # <ol><li id='foo1'></li><li id='foo2'></li></ol>
-
-##### Minitest (http://www.confreaks.com/videos/2713-arrrrcamp2013-a-big-look-at-minitest)
-# Recommended:
-# gem install cheat; cheat minitest
-#
-require 'minitest/autorun'
-
-# to use context instead of nested describes: optional
-class Minitest::Spec
-  class << self
-    alias :context, :describe
-  end
-end
-
-class Foo
-  def add(x, y)
-    x + y
-  end
-end
-
-describe Foo do
-
-  let(:something) { [ 1, 2, 3 ] }
-
-  before do # before each test
-    @foo = 1
-  end
-
-  after do # after each test
-    @foo = nil
-  end
-
-  context '#add' do
-    it 'adds two numbers' do
-      Foo.new.add(1,2).must_equal 3
-    end
-  end
-
-  context 'skips' do
-    it 'this because no block'
-
-    it 'this explicitly' do
-      skip
-    end
-
-    it 'this explicitly' do
-      skip 'and outputs a reason'
-    end
-  end
-
-  context 'expectations' do
-    it 'goes both ways' do
-      true.must_be true
-      true.wont_be false
-    end
-  end
-end
