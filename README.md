@@ -11,3 +11,7 @@ This is my .vim directory.
 1. `ln -s .vim/vimrc .vimrc`
 
 Close any existing vim instances and restart.
+
+The first time, Vundle will install current versions of all the plugins automatically.
+
+You should be good to go!
