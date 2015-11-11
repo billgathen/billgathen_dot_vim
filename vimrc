@@ -108,6 +108,10 @@ nnoremap <leader><leader> <c-^>
     endif
 " Setting up Vundle - the vim plugin bundler end
 
+" vim-commentary: But I WANT to use \\
+:nmap \\ gc
+:xmap \\ gc
+
 " vim-ruby suggested options
 set nocompatible
 syntax on
@@ -160,3 +164,6 @@ map <Leader>r :! clear; ruby %<CR>
 map <Leader>n :! clear; node %<CR>
 map <Leader>e :! clear; elixir %<CR>
 map <Leader>i :! clear; iex -S mix<CR>
+
+" Elm Development
+nmap mm :! elm-make Main.elm<cr>
