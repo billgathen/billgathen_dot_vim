@@ -31,15 +31,23 @@ set tabstop=2     "two tab spaces
 set softtabstop=2 "number of spaces to skip or insert when <BS>ing or <Tab>ing
 set expandtab     "spaces instead of tabs for better cross-editor compatibility
 
-set autoindent    "keep the indent when creating a new line
-set smarttab      "use shiftwidth and softtabstop to insert or delete (on <BS>) blanks
 set cindent       "recommended seting for automatic C-style indentation
 set wrap
 set linebreak     "wrap entire words, don't break them; much easier to read!
-set laststatus=2  "show status line
-set incsearch     "show partial matches while typing
-set backspace=indent,eol,start "allow backspacing over existing text
 
+" Ben Orenstein - Write code faster: expert-level vim (Railsberry 2012) 
+" https://youtu.be/SkdrYWhh-8s
+" Saving and quitting are tedious
+nmap <leader>s :w<cr>
+nmap <leader>q :q<cr>
+nmap <leader>Q :wq<cr>
+" Tips
+" :AV open the alternate rails file in a vertical split
+" [m and ]M jump to the beginning/end of the current method
+
+" Bram Moolenaar '7 Habits'
+" * searches for the current word
+" ctrl-n opens autocomplete, ctrl-n and p navigate it
 
 " GB: Highlight current line
 set cursorline
@@ -72,6 +80,7 @@ nnoremap <leader><leader> <c-^>
     Plugin 'gmarik/Vundle.vim'
 
     "List bundles here
+    Plugin 'tpope/vim-sensible'
     Plugin 'vim-ruby/vim-ruby'
     Plugin 'mattn/emmet-vim'
     Plugin 'kien/ctrlp.vim'
@@ -99,7 +108,6 @@ nnoremap <leader><leader> <c-^>
     "
 
     call vundle#end()
-    filetype plugin indent on
 
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
@@ -114,7 +122,6 @@ nnoremap <leader><leader> <c-^>
 
 " vim-ruby suggested options
 set nocompatible
-syntax on
 filetype on
 filetype indent on
 filetype plugin on
@@ -166,4 +173,4 @@ map <Leader>e :! clear; elixir %<CR>
 map <Leader>i :! clear; iex -S mix<CR>
 
 " Elm Development
-nmap mm :! elm-make Main.elm<cr>
+nmap mm :! elm-make Main.elm --output elm.js<cr>
