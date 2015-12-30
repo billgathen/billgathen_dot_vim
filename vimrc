@@ -18,9 +18,9 @@
 "
 " On OSX, use `brew install vim` to get version with clipboard enabled!
 
-colorscheme railscasts
 " Only works in gui versions of vim! (MacVim, etc)
-" In terminal vim, control it with the terminal font
+" In terminal vim, control it with the terminal font (pastel dark works well)
+colorscheme railscasts
 set gfn=Source\ Code\ Pro:h12,Menlo:h12
 
 set number
@@ -31,7 +31,7 @@ set tabstop=2     "two tab spaces
 set softtabstop=2 "number of spaces to skip or insert when <BS>ing or <Tab>ing
 set expandtab     "spaces instead of tabs for better cross-editor compatibility
 
-set cindent       "recommended seting for automatic C-style indentation
+set cindent       "recommended setting for automatic C-style indentation
 set wrap
 set linebreak     "wrap entire words, don't break them; much easier to read!
 
@@ -40,14 +40,18 @@ set linebreak     "wrap entire words, don't break them; much easier to read!
 " Saving and quitting are tedious
 nmap <leader>s :w<cr>
 nmap <leader>q :q<cr>
+nmap <leader>qa :qall<cr>
 nmap <leader>Q :wq<cr>
-" Tips
+" Ben Tips
 " :AV open the alternate rails file in a vertical split
 " [m and ]M jump to the beginning/end of the current method
 
 " Bram Moolenaar '7 Habits'
 " * searches for the current word
 " ctrl-n opens autocomplete, ctrl-n and p navigate it
+
+" vimtutor tips
+" u undoes the last change, U undoes all changes on the current line
 
 " GB: Highlight current line
 set cursorline
@@ -99,6 +103,10 @@ nnoremap <leader><leader> <c-^>
     Plugin 'janko-m/vim-test'
     Plugin 'tpope/vim-dispatch'
     Plugin 'tpope/vim-rails'
+    Plugin 'guns/vim-clojure-static'
+    Plugin 'tpope/vim-fireplace'
+    Plugin 'tpope/vim-classpath'
+    Plugin 'luochen1990/rainbow'
     "End of bundles
     "
     " After adding a new bundle, run:
@@ -174,3 +182,8 @@ map <Leader>i :! clear; iex -S mix<CR>
 
 " Elm Development
 nmap mm :! elm-make Main.elm --output elm.js<cr>
+
+" Clojure Development
+let g:rainbow_conf = { 'ctermfgs': ['darkblue', 'darkgreen', 'darkyellow', 'darkmagenta', 'darkred'] }
+let g:rainbow_active = 1
+nmap <silent> <leader>rain :RainbowToggle<cr>

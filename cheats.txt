@@ -17,6 +17,12 @@ UNDO/REDO
 u : undo
 c-r : redo
 
+##### Clojure VIM tools
+# These all require another terminal window to be running `lein repl`
+cpp : executes the form the cursor is on
+cqp : single-use repl to try something 
+K : show docs for whatever the cursor is on
+
 ##### Pry
 binding.pry # add to source code or test: pry pauses here
 help # show pry help
