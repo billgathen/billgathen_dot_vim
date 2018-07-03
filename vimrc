@@ -15,6 +15,7 @@
 " Great vim resources:
 " - http://vimsheet.com
 " - http://vim.rtorr.com
+" - http://janjiss.com/walkthrough-of-my-vimrc-file-for-ruby-development
 "
 " On OSX, use `brew install vim` to get version with clipboard enabled!
 
@@ -34,6 +35,14 @@ set expandtab     "spaces instead of tabs for better cross-editor compatibility
 set cindent       "recommended setting for automatic C-style indentation
 set wrap
 set linebreak     "wrap entire words, don't break them; much easier to read!
+
+" Show trailing whitespace and spaces before a tab:
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\\t/
+
+" Make every cut/paste interact with system clipboard!
+" No more " * p
+set clipboard=unnamed
 
 " Ben Orenstein - Write code faster: expert-level vim (Railsberry 2012) 
 " https://youtu.be/SkdrYWhh-8s
@@ -68,61 +77,48 @@ set hls
 " toggle between last buffers
 nnoremap <leader><leader> <c-^>
 
-" Setting up Vundle - the vim plugin bundler
-" http://erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
-    let iCanHazVundle=1
-    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-    if !filereadable(vundle_readme)
-        echo "Installing Vundle.."
-        echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-        let iCanHazVundle=0
-    endif
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#begin()
-    Plugin 'gmarik/Vundle.vim'
+" Vundle plugin manager help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-    "List bundles here
-    Plugin 'tpope/vim-sensible'
-    Plugin 'vim-ruby/vim-ruby'
-    Plugin 'mattn/emmet-vim'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-commentary'
-    Plugin 'tpope/vim-bundler'
-    Plugin 'tpope/vim-endwise'
-    Plugin 'elixir-lang/vim-elixir'
-    Plugin 'terryma/vim-multiple-cursors'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'rking/ag.vim'
-    Plugin 'bling/vim-airline'
-    Plugin 'lambdatoast/elm.vim'
-    Plugin 'janko-m/vim-test'
-    Plugin 'tpope/vim-dispatch'
-    Plugin 'tpope/vim-rails'
-    Plugin 'guns/vim-clojure-static'
-    Plugin 'tpope/vim-fireplace'
-    Plugin 'tpope/vim-classpath'
-    Plugin 'luochen1990/rainbow'
-    "End of bundles
-    "
-    " After adding a new bundle, run:
-    "
-    " :source %
-    " :PluginInstall
-    "
+" List bundles here
+"
+" After changes:
+" :source %
+" :PluginInstall
+"
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-sensible'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'mattn/emmet-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'
+Plugin 'pangloss/vim-javascript'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'rking/ag.vim'
+" Plugin 'bling/vim-airline'
+Plugin 'janko-m/vim-test'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'luochen1990/rainbow'
+Plugin 'vim-syntastic/syntastic'
+"End of bundles
 
-    call vundle#end()
-
-    if iCanHazVundle == 0
-        echo "Installing Bundles, please ignore key map error messages"
-        echo ""
-        :BundleInstall
-    endif
-" Setting up Vundle - the vim plugin bundler end
+call vundle#end()
+filetype plugin indent on
 
 " vim-commentary: But I WANT to use \\
 :nmap \\ gc
@@ -130,7 +126,7 @@ nnoremap <leader><leader> <c-^>
 
 " vim-ruby suggested options
 set nocompatible
-filetype on
+filetype off
 filetype indent on
 filetype plugin on
 compiler ruby
@@ -159,15 +155,15 @@ set grepprg=ack\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
 
 " vim-test setup
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
+nmap <silent> <leader>t :w<CR>:TestNearest<CR>
+nmap <silent> <leader>T :w<CR>:TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
 " Dispatch opens in temp window, then opens quickfix list
 " if any errors result. :cn and :cp navigate through the errors,
 " jumping you directly to the spec files they occurred in!
-let test#strategy = 'dispatch'
+" let test#strategy = 'dispatch'
 
 " rails.vim
 " :A (alternate file)
@@ -176,14 +172,19 @@ let test#strategy = 'dispatch'
 " :help rails (to view the help)
 
 map <Leader>r :! clear; ruby %<CR>
-map <Leader>n :! clear; node %<CR>
-map <Leader>e :! clear; elixir %<CR>
-map <Leader>i :! clear; iex -S mix<CR>
 
-" Elm Development
-nmap mm :! elm-make Main.elm --output elm.js<cr>
+" JavaScript Development
+" https://medium.com/@hpux/vim-and-eslint-16fa08cc580f
+" Syntastic + ESLint
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" Clojure Development
-let g:rainbow_conf = { 'ctermfgs': ['darkblue', 'darkgreen', 'darkyellow', 'darkmagenta', 'darkred'] }
-let g:rainbow_active = 1
-nmap <silent> <leader>rain :RainbowToggle<cr>
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+
+map <Leader>j :! node %<CR>
